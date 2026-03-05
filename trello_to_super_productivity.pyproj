@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{12345678-1234-1234-1234-123456789012}</ProjectGuid>
+    <RootNamespace>build_sat_request</RootNamespace>
+    <AssemblyName>build_sat_request</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PythonVersion>3.11</PythonVersion>
+    <InterpreterPath>$(ProjectDir).venv\Scripts\python.exe</InterpreterPath>
+    <TestFramework>pytest</TestFramework>
+    <TestPath>tests</TestPath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src\**\*.py" />
+    <Compile Include="tests\**\*.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\build_sat_request\" />
+    <Folder Include="tests\" />
+    <Folder Include="tests\unit\" />
+    <Folder Include="tests\functional\" />
+    <Folder Include="tests\integration\" />
+  </ItemGroup>
+  <Target Name="Test">
+    <Exec Command="$(InterpreterPath) -m pytest tests -v" ContinueOnError="false" />
+  </Target>
+  <Target Name="TestWithCoverage">
+    <Exec Command="$(InterpreterPath) -m pytest tests --cov=src --cov-report=html --cov-report=term-missing -v" ContinueOnError="false" />
+  </Target>
+  <Target Name="TypeCheck">
+    <Exec Command="$(InterpreterPath) -m mypy src tests" ContinueOnError="false" />
+  </Target>
+</Project>
