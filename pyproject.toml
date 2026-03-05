@@ -21,7 +21,7 @@ classifiers = [
 dependencies = []
 
 [project.scripts]
-trello-to-super-productivity = "src.main:main"
+trello-to-super-productivity = "cli:main"
 
 [project.optional-dependencies]
 dev = [
@@ -83,7 +83,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["build_sat_request"]
+known_first_party = ["cli", "migrator"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
