@@ -153,3 +153,6 @@ Desktop.ini
 
 # Migration tool output
 output/
+
+# Personal data files (Trello exports, SP backups, logs)
+data/
